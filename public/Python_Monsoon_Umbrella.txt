@@ -1,0 +1,46 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+def getUmbrellas(n, p):
+    count=0
+    for i in range(len(p)):
+        if(p[i]==n):
+            count=1
+            break
+    if(count!=1):
+        sums=sum(p)
+        if(sums==n):
+            count=len(p)
+    p.sort(reverse=True)
+    for i in range(len(p)):
+        if(count!=1 and count!=len(p) and n>=p[i]):
+            while(n>=p[i]):
+                if(n%p[i]==0):
+                    count+=1
+                    n=n-p[i]
+                    
+    if(count==0):
+        count=-1
+    return count;
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    p_count = int(input())
+
+    p = []
+
+    for _ in range(p_count):
+        p_item = int(input())
+        p.append(p_item)
+
+    res = getUmbrellas(n, p)
+
+    fptr.write(str(res) + '\n')
+
+    fptr.close()
