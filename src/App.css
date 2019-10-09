@@ -1,3 +1,56 @@
+head,
+input,
+textarea {
+  color: #4d4d4d;
+}
+
+.group input,
+.group textarea {
+  padding: 5px;
+  border: none;
+  width: 100%;
+  background: #33000000;
+  border-bottom: 1px solid blue;
+}
+
+.group input:focus,
+.group textarea:focus {
+  outline: none;
+}
+
+.bar {
+  position: relative;
+  display: flex;
+}
+
+.bar:before,
+.bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: blue;
+  transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+}
+
+.bar:before {
+  left: 50%;
+}
+
+.bar:after {
+  right: 50%;
+}
+
+.group input:focus ~ .bar:before,
+.group input:focus ~ .bar:after,
+.group textarea:focus ~ .bar:before,
+.group textarea:focus ~ .bar:after {
+  width: 50%;
+}
+
 .App-header {
   background-color: #000513;
 }
@@ -25,6 +78,13 @@
 }
 
 .vl {
+  border: 1px solid #0b4269;
+  height: 100vh;
+}
+
+.card-size {
+  background: "rgba(255, 255, 255, 0.0)";
+  /* border: "none"; */
   border: 1px solid #0b4269;
   height: 100vh;
 }
