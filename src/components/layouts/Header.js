@@ -34,7 +34,10 @@ class Header extends Component {
     const show = this.state.menu ? "show" : "";
     return (
       <Fragment>
-        <nav className="navbar navbar-expand-lg navbar-dark App-header">
+        <nav
+          id="navbar"
+          className="navbar navbar-expand-lg navbar-dark App-header"
+        >
           <Link to="/" className="navbar-brand">
             <img alt="" src="/favicon.ico" width="30px" height="30px" />
           </Link>

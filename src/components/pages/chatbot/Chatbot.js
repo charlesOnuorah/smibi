@@ -1,10 +1,15 @@
 import React, { Component, Fragment } from "react";
 import { UserReplyCard, BotReplyCard } from "../../simbicards/ReplyCard";
+import ReactTextareaAutocomplete from "@webscopeio/react-textarea-autocomplete";
+import { Picker, emojiIndex } from "emoji-mart";
+import { Smile } from "react-feather";
+
 // import "./chatbot.css";
 
 export default class ChatBotComponent extends Component {
   state = {
-    chat: false
+    chat: false,
+    showEmoji: false
   };
   chat = () => {
     this.setState(previousState => ({
@@ -12,7 +17,14 @@ export default class ChatBotComponent extends Component {
     }));
   };
 
+  showEmoji = () => {
+    this.setState(previousState => ({
+      showEmoji: !previousState.showEmoji
+    }));
+  };
+
   render() {
+    const { showEmoji } = this.state;
     return (
       <Fragment>
         <div className="chat-container">
@@ -34,6 +46,30 @@ export default class ChatBotComponent extends Component {
           </div>
 
           <UserReplyCard text="Ye" />
+
+          <div>
+            <button onClick={() => this.showEmoji()}>
+              <Smile />
+            </button>
+
+            {showEmoji && <Picker />}
+            <ReactTextareaAutocomplete
+              loadingComponent={() => <span>Loading</span>}
+              trigger={{
+                ":": {
+                  dataProvider: token =>
+                    emojiIndex.search(token).map(o => ({
+                      colons: o.colons,
+                      native: o.native
+                    })),
+                  component: ({ entity: { native, colons } }) => (
+                    <div>{`${colons} ${native}`}</div>
+                  ),
+                  output: item => `${item.native}`
+                }
+              }}
+            />
+          </div>
         </div>
       </Fragment>
     );
