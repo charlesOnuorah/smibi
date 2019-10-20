@@ -156,20 +156,28 @@ textarea {
 
 .chat-container {
   margin-top: 12px;
+
+  display: flex;
+  flex-direction: column;
+  height: 410px;
+  scroll-behavior: smooth;
+  overflow-y: auto;
 }
 .chat-header {
   color: #fff;
   margin-bottom: 50px;
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+}
+
 /* Chat section style */
 
 .chat-section {
-  /* border: 1px solid orange; */
-  /* display: flex; */
-  /* flex-direction: column; */
   position: relative;
-  left: 60.5%;
+  left: 50.5%;
+  width: 500px;
   margin-top: 8%;
 }
 
@@ -177,7 +185,6 @@ textarea {
 
 .chat-card-container {
   display: flex;
-  /* border: 1px solid red; */
   flex-direction: row;
 }
 
@@ -194,17 +201,16 @@ textarea {
 
 .add-color-2 {
   background-color: #ffc107;
-  min-height: 20px;
+  /* min-height: 20px; */
 }
 .chat-text {
   /* background-color: #fff; */
   border-radius: 8px;
   display: flex;
   justify-content: flex-start;
-  /* align-items: center; */
+  word-break: break-all;
   padding: 10px 10px;
   width: 220px;
-  word-break: normal;
 }
 
 .simbi-avatar {
@@ -248,9 +254,24 @@ textarea {
 }
 
 .bot-reply-section {
-  /* border: 1px solid red; */
+  justify-content: flex-start;
   position: relative;
-  right: 120px;
+}
+
+.user-reply-section {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  /* flex-direction: column; */
+}
+
+.textarea-container {
+  position: absolute;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 492px;
 }
 
 /* Handle nav hide overflow */
