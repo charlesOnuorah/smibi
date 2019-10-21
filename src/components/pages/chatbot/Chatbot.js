@@ -4,7 +4,7 @@ import ReactTextareaAutocomplete from "@webscopeio/react-textarea-autocomplete";
 import { Picker, emojiIndex } from "emoji-mart";
 import { Smile } from "react-feather";
 import { TextAreaComponent } from "./Textarea";
-
+const Pusher = require("pusher-js");
 // import "./chatbot.css";
 
 export default class ChatBotComponent extends Component {
@@ -22,6 +22,24 @@ export default class ChatBotComponent extends Component {
       }
     ]
   };
+
+  componentDidMount() {
+    const pusher = new Pusher("69d47dcdbfdc1cb6d6de", {
+      cluster: "eu",
+      encrypted: true
+    });
+
+    const channel = pusher.subscribe("bot");
+    channel.bind("bot-response", data => {
+      const msg = {
+        message: data.message,
+        data_id: 1
+      };
+      this.setState({
+        messageArr: [...this.state.messageArr, msg]
+      });
+    });
+  }
 
   chat = () => {
     this.setState(previousState => ({
@@ -85,9 +103,16 @@ export default class ChatBotComponent extends Component {
       messageArr: newMessage
     });
 
-    setTimeout(() => {
-      this.botReply();
-    }, 3000);
+    fetch("http://localhost:5000/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message: message
+      })
+    });
+    // setTimeout(() => {
+    //   this.botReply();
+    // }, 3000);
   };
 
   botReply = () => {

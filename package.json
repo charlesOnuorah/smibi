@@ -5,7 +5,9 @@
   "dependencies": {
     "@webscopeio/react-textarea-autocomplete": "^4.6.1",
     "bootstrap": "^4.3.1",
+    "dialogflow": "^0.12.1",
     "emoji-mart": "^2.11.1",
+    "pusher-js": "^5.0.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-feather": "^2.0.3",

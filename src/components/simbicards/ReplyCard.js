@@ -3,7 +3,7 @@ import React from "react";
 export function BotReplyCard({ text }) {
   return (
     <>
-      <div className="chat-card-container">
+      <div className="chat-card-container add-margin">
         <div className="simbi-avatar" />
         <div className="chat-text add-color-1">{text}</div>
         <div className="chat-semi-circle" />

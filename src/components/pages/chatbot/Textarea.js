@@ -17,7 +17,7 @@ export class TextAreaComponent extends React.Component {
             onChange={this.onSendMessage}
           ></textarea>
           <span className="send-chat" onClick={() => this.sendMessageHandler()}>
-            Send
+            <i className="fa fa-paper-plane" aria-hidden="true"></i>
           </span>
         </span>
       </React.Fragment>

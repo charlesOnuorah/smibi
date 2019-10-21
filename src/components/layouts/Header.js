@@ -78,7 +78,10 @@ class Header extends Component {
           </div>
         </nav>
 
-        <section className={chat ? "show-overlay" : "hide-overlay"}>
+        <section
+          className={chat ? "show-overlay" : "hide-overlay"}
+          aria-hidden="true"
+        >
           {chat && (
             <span className="close-icon-section">
               <div className={"close-icon"} onClick={this.handleClose}>
