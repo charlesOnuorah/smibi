@@ -5,8 +5,7 @@ import { Picker, emojiIndex } from "emoji-mart";
 import { Smile } from "react-feather";
 import { TextAreaComponent } from "./Textarea";
 const Pusher = require("pusher-js");
-// import "./chatbot.css";
-
+const url = "https://simbi.herokuapp.com/chat";
 export default class ChatBotComponent extends Component {
   state = {
     chat: false,
@@ -58,13 +57,6 @@ export default class ChatBotComponent extends Component {
     return (
       <Fragment>
         <div className="chat-container">
-          {/* <div className="bot-reply-section">
-            <BotReplyCard
-              text={
-                "For God so loved the world that he gave his only begotten son"
-              }
-            />
-          </div> */}
           {this.state.messageArr && (
             <React.Fragment>
               {this.state.messageArr.map((item, index) => {
@@ -103,7 +95,7 @@ export default class ChatBotComponent extends Component {
       messageArr: newMessage
     });
 
-    fetch("http://localhost:5000/chat", {
+    fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

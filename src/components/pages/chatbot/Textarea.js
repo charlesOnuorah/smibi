@@ -5,7 +5,7 @@ export class TextAreaComponent extends React.Component {
     message: ""
   };
   render() {
-    const { message } = this.props;
+    const { message } = this.state;
     return (
       <React.Fragment>
         <span>
@@ -26,9 +26,10 @@ export class TextAreaComponent extends React.Component {
 
   sendMessageHandler = () => {
     this.props.receivemessage(this.state.message, true);
-    // this.setState({
-    //   message: ""
-    // });
+
+    this.setState({
+      message: ""
+    });
   };
 
   onSendMessage = ({ target: { value, name } }) => {
