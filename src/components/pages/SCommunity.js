@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import SCommunityCard from "../simbicards/SCommunityCard";
 import { Consumer } from "../../context";
 import axios from "axios";
-
 class SCommunity extends Component {
   constructor(props) {
     super(props);
