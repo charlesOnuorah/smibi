@@ -47,6 +47,8 @@ class SInfo extends Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.handlePuberty = this.handlePuberty.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+
 
   }
 
@@ -58,7 +60,9 @@ class SInfo extends Component {
     this.setState({show: false});
   }
 
-
+  handleClose() {
+    this.setState({show: true});
+  }
 
   render() {
     const { cards, show } = this.state;
@@ -84,19 +88,19 @@ class SInfo extends Component {
                   <input  onClick={this.handleClick} className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Consent and Privacy'/>
                   <input  onClick={this.handleClick} className='btn btn-warning w-100 p-0 m-2 mx-5' type='button' value='STIs'/>
                   <input  onClick={this.handleClick} className='btn btn-warning w-100 p-0 m-2 mx-5 fs-12' type='button' value='Human Body & Dev'/>
-                  <input className='btn btn-danger w-100 p-0 m-2 mx-5' type='button' value='HIV/AIDS Stigma & Care'/>
-                  <input className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Sexual Violence & Safety'/>
-                  <input className='btn btn-warning w-100 p-0 m-2 mx-5' type='button' value='Sexual Value and Sexuality'/>
-                  <input className='btn btn-danger w-100 p-0 m-2 mx-5' type='button' value='Abstinence'/>
-                  <input className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Pregnancy'/>
-                  <input className='btn btn-warning w-100 p-0 m-2 mx-5' type='button' value='Family Planning'/>
-                  <input className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Emergency Contraceptives'/>
-                  <input className='btn btn-danger w-100 p-0 m-2 mx-5' type='button' value='Friendship Skills'/>
-                  <input className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Loving Relationship skills'/>
-                  <input className='btn btn-warning w-100 p-0 m-2 mx-5' type='button' value='Gender Roles'/>
-                  <input className='btn btn-danger w-100 p-0 m-2 mx-5' type='button' value='Sexual Laws and Rights'/>
-                  <input className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Unsafe Abortion'/>
-                  <input className='btn btn-warning w-100 p-0 m-2 mx-5' type='button' value='Sexting & Safe Use of ICT'/>
+                  <input onClick={this.handleClick} className='btn btn-danger w-100 p-0 m-2 mx-5' type='button' value='HIV/AIDS Stigma & Care'/>
+                  <input onClick={this.handleClick} className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Sexual Violence & Safety'/>
+                  <input onClick={this.handleClick} className='btn btn-warning w-100 p-0 m-2 mx-5' type='button' value='Sexual Value and Sexuality'/>
+                  <input onClick={this.handleClick} className='btn btn-danger w-100 p-0 m-2 mx-5' type='button' value='Abstinence'/>
+                  <input onClick={this.handleClick} className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Pregnancy'/>
+                  <input onClick={this.handleClick} className='btn btn-warning w-100 p-0 m-2 mx-5' type='button' value='Family Planning'/>
+                  <input onClick={this.handleClick} className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Emergency Contraceptives'/>
+                  <input onClick={this.handleClick} className='btn btn-danger w-100 p-0 m-2 mx-5' type='button' value='Friendship Skills'/>
+                  <input onClick={this.handleClick} className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Loving Relationship skills'/>
+                  <input onClick={this.handleClick} className='btn btn-warning w-100 p-0 m-2 mx-5' type='button' value='Gender Roles'/>
+                  <input onClick={this.handleClick} className='btn btn-danger w-100 p-0 m-2 mx-5' type='button' value='Sexual Laws and Rights'/>
+                  <input  onClick={this.handleClick}className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Unsafe Abortion'/>
+                  <input onClick={this.handleClick} className='btn btn-warning w-100 p-0 m-2 mx-5' type='button' value='Sexting & Safe Use of ICT'/>
                   </div>
                 </div>
                 <hr className='vl'/>
@@ -104,13 +108,24 @@ class SInfo extends Component {
                 <div className='col-lg-3 col-sm-8'>
                   <h4 className='text-danger text-center'>MENTAL <br/><u>HEALTH</u></h4>
                   <div className='row justify-content-center mt-4'>
-                  <input className='btn btn-success w-25 p-0 m-2 mx-5' type='button' value='Addiction'/>
-                  <input className='btn btn-warning w-25 p-0 m-2 mx-5' type='button' value='STDs'/>
-                  <input className='btn btn-danger w-25 p-0 m-2 mx-5' type='button' value='LGBTs'/>
-                  <input className='btn btn-success w-25 p-0 m-2 mx-5' type='button' value='Pedophiles'/>
-                  <input className='btn btn-warning w-25 p-0 m-2 mx-5' type='button' value='Abuse'/>
-                  <input className='btn btn-danger w-25 p-0 m-2 mx-5' type='button' value='Assaults'/>
-                  <input className='btn btn-success w-25 p-0 m-2 mx-5' type='button' value='Voilence'/>
+                  <input  onClick={this.handlePuberty} className='btn btn-success p-0 m-2 mx-5' style={{width : 1000}} type='button' value='Puberty'/>
+                  <input  onClick={this.handleClick} className='btn btn-danger w-100 p-0 m-2 mx-5' type='button' value='Negotiation & Decision Skills'/>
+                  <input  onClick={this.handleClick} className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Consent and Privacy'/>
+                  <input  onClick={this.handleClick} className='btn btn-warning w-100 p-0 m-2 mx-5' type='button' value='STIs'/>
+                  <input  onClick={this.handleClick} className='btn btn-warning w-100 p-0 m-2 mx-5 fs-12' type='button' value='Human Body & Dev'/>
+                  <input onClick={this.handleClick} className='btn btn-danger w-100 p-0 m-2 mx-5' type='button' value='HIV/AIDS Stigma & Care'/>
+                  <input onClick={this.handleClick} className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Sexual Violence & Safety'/>
+                  <input onClick={this.handleClick} className='btn btn-warning w-100 p-0 m-2 mx-5' type='button' value='Sexual Value and Sexuality'/>
+                  <input onClick={this.handleClick} className='btn btn-danger w-100 p-0 m-2 mx-5' type='button' value='Abstinence'/>
+                  <input onClick={this.handleClick} className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Pregnancy'/>
+                  <input onClick={this.handleClick} className='btn btn-warning w-100 p-0 m-2 mx-5' type='button' value='Family Planning'/>
+                  <input onClick={this.handleClick} className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Emergency Contraceptives'/>
+                  <input onClick={this.handleClick} className='btn btn-danger w-100 p-0 m-2 mx-5' type='button' value='Friendship Skills'/>
+                  <input onClick={this.handleClick} className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Loving Relationship skills'/>
+                  <input onClick={this.handleClick} className='btn btn-warning w-100 p-0 m-2 mx-5' type='button' value='Gender Roles'/>
+                  <input onClick={this.handleClick} className='btn btn-danger w-100 p-0 m-2 mx-5' type='button' value='Sexual Laws and Rights'/>
+                  <input  onClick={this.handleClick}className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Unsafe Abortion'/>
+                  <input onClick={this.handleClick} className='btn btn-warning w-100 p-0 m-2 mx-5' type='button' value='Sexting & Safe Use of ICT'/>
                   
                   </div>
                 </div>
@@ -119,13 +134,24 @@ class SInfo extends Component {
                   <h4 className='text-warning text-center'>SOCIAL & <br/>PHYSICAL <br/><u>HEALTH</u></h4>
                   <div className='row justify-content-center'>
 
-                  <input className='btn btn-success w-25 p-0 m-2 mx-5' type='button' value='Exercise'/>
-                  <input className='btn btn-warning w-25 p-0 m-2 mx-5' type='button' value='STDs'/>
-                  <input className='btn btn-danger w-25 p-0 m-2 mx-5' type='button' value='LGBTs'/>
-                  <input className='btn btn-success w-25 p-0 m-2 mx-5' type='button' value='Pedophiles'/>
-                  <input className='btn btn-warning w-25 p-0 m-2 mx-5' type='button' value='Abuse'/>
-                  <input className='btn btn-danger w-25 p-0 m-2 mx-5' type='button' value='Assaults'/>
-                  <input className='btn btn-success w-25 p-0 m-2 mx-5' type='button' value='Voilence'/>
+                  <input  onClick={this.handlePuberty} className='btn btn-success p-0 m-2 mx-5' style={{width : 1000}} type='button' value='Puberty'/>
+                  <input  onClick={this.handleClick} className='btn btn-danger w-100 p-0 m-2 mx-5' type='button' value='Negotiation & Decision Skills'/>
+                  <input  onClick={this.handleClick} className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Consent and Privacy'/>
+                  <input  onClick={this.handleClick} className='btn btn-warning w-100 p-0 m-2 mx-5' type='button' value='STIs'/>
+                  <input  onClick={this.handleClick} className='btn btn-warning w-100 p-0 m-2 mx-5 fs-12' type='button' value='Human Body & Dev'/>
+                  <input onClick={this.handleClick} className='btn btn-danger w-100 p-0 m-2 mx-5' type='button' value='HIV/AIDS Stigma & Care'/>
+                  <input onClick={this.handleClick} className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Sexual Violence & Safety'/>
+                  <input onClick={this.handleClick} className='btn btn-warning w-100 p-0 m-2 mx-5' type='button' value='Sexual Value and Sexuality'/>
+                  <input onClick={this.handleClick} className='btn btn-danger w-100 p-0 m-2 mx-5' type='button' value='Abstinence'/>
+                  <input onClick={this.handleClick} className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Pregnancy'/>
+                  <input onClick={this.handleClick} className='btn btn-warning w-100 p-0 m-2 mx-5' type='button' value='Family Planning'/>
+                  <input onClick={this.handleClick} className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Emergency Contraceptives'/>
+                  <input onClick={this.handleClick} className='btn btn-danger w-100 p-0 m-2 mx-5' type='button' value='Friendship Skills'/>
+                  <input onClick={this.handleClick} className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Loving Relationship skills'/>
+                  <input onClick={this.handleClick} className='btn btn-warning w-100 p-0 m-2 mx-5' type='button' value='Gender Roles'/>
+                  <input onClick={this.handleClick} className='btn btn-danger w-100 p-0 m-2 mx-5' type='button' value='Sexual Laws and Rights'/>
+                  <input  onClick={this.handleClick}className='btn btn-success w-100 p-0 m-2 mx-5' type='button' value='Unsafe Abortion'/>
+                  <input onClick={this.handleClick} className='btn btn-warning w-100 p-0 m-2 mx-5' type='button' value='Sexting & Safe Use of ICT'/>
                   
                   </div>
                 </div>
@@ -134,7 +160,7 @@ class SInfo extends Component {
               <div className='container' style={{display: show ? "none" : ""}} >
                 <div className='row justify-content-end'>
                   <div className='order-2 col-sm-4'>
-                <i className='fas fa-window-close fa-2x'></i>
+                <i onClick={this.handleClose} className='fas fa-window-close fa-2x'></i>
                   </div>
                   <div className='col-sm-8'>
                 {cards.map(card => (

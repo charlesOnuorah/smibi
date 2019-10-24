@@ -10,7 +10,12 @@ class SCard extends Component {
       name: '',
       desc: ''
     };
+    // this.routeChange = this.routeChange.bind(this);
+
   }
+  // routeChange() {
+  //   this.props.('/sgist');
+  // }
   render() {
     const {
       imageScr,
@@ -34,8 +39,12 @@ class SCard extends Component {
           <img alt='' className='img-responsive img-height' src={imageScr} />
         </div>
         <div className='card-body p-0'>
+
+          
+
           <input
             className={btnStyle}
+            // onClick={this.routeChange}
             style={{ width: '50%' }}
             type='button'
             value={label}
