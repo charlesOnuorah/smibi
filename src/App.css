@@ -1,5 +1,4 @@
-head,
-input,
+* input,
 textarea {
   color: #4d4d4d;
 }
@@ -44,6 +43,11 @@ textarea {
   right: 50%;
 }
 
+.alert-Image {
+  width: 150px;
+  height: 150px;
+}
+
 .group input:focus ~ .bar:before,
 .group input:focus ~ .bar:after,
 .group textarea:focus ~ .bar:before,
@@ -78,13 +82,6 @@ textarea {
 }
 
 .vl {
-  border: 1px solid #0b4269;
-  height: 100vh;
-}
-
-.card-size {
-  background: "rgba(255, 255, 255, 0.0)";
-  /* border: "none"; */
   border: 1px solid #0b4269;
   height: 100vh;
 }
@@ -279,4 +276,28 @@ textarea {
 
 #navbar {
   z-index: 9000;
+}
+.circle-parent {
+  width: 180px;
+}
+
+.gistContent {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.circle {
+  border-radius: 50%;
+  overflow: hidden;
+}
+/* Handle hide and show  of container*/
+
+.hide-container {
+  display: none;
+}
+
+.show-container {
+  display: block;
 }

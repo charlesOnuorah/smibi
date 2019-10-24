@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import SCard from '../simbicards/SCard';
 import { Consumer } from '../../context';
+import axios from 'axios';
+
 
 class Landing extends Component {
   constructor(props) {
@@ -92,6 +94,33 @@ class Landing extends Component {
     };
   }
 
+    //CONSUME AN ENDPOINT WITH AXIOS
+    // componentDidMount(){
+    //   axios.get("").then(res => {
+    //       const landing = res.data;
+    //       this.setState({landing});
+    //     })
+  //}
+
+  
+  async componentDidMount(){
+    // axios.get("https://simbi.herokuapp.com/community-api/get-gist-posts").then(res => {
+    //     const landing = res.data;
+    //     this.setState({landing});
+    //   })
+    
+    const scommunity = await axios.get("https://simbi.herokuapp.com/community-api/get-community-posts");
+    const sgist = await axios.get("https://simbi.herokuapp.com/community-api/get-gist-posts");
+    const sInformation = await axios.get("https://simbi.herokuapp.com/community-api/get-gist-posts");
+
+    const landing = [scommunity.data[0], sgist.data[0], sInformation.data[0], scommunity.data[1], sgist.data[1], sInformation.data[1]]
+    console.log(landing)
+    console.log(scommunity)
+
+
+    this.setState({cards: scommunity.data})
+    }
+
   render() {
     const { cards } = this.state;
     return (
@@ -101,6 +130,7 @@ class Landing extends Component {
           return (
             <div className='row justify-content-center pt-2'>
               {cards.map(card => (
+                
                 <SCard key={card.id} cardDetails={card} />
               ))}
             </div>
