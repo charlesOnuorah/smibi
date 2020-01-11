@@ -60,9 +60,8 @@ class Header extends Component {
                 <i className="fa fa-comments" /> sGist
               </Link>
             </div>
-
             <div className="navbar-nav ml-auto">
-              <Link className="nav-item nav-link" to="/">
+              <Link className="nav-item nav-link" to="#">
                 <i onClick={this.chat} className="fas fa-comment-alt" />
               </Link>
               <Link className="nav-item nav-link" to="/notification">
