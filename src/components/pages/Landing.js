@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SCard from "../simbicards/SCard";
-import { Consumer } from "../../context";
+import { connect } from "react-redux";
+import * as actions from "../../actions";
 import axios from "axios";
 
 class Landing extends Component {
@@ -117,6 +118,8 @@ class Landing extends Component {
       "https://simbi.herokuapp.com/community-api/get-gist-posts"
     );
 
+   // const land = await axios.get("https://simbi.herokuapp.com/community-api/get-landing-page-topics"   );
+
     const landing = [
       scommunity.data[0],
       sgist.data[0],
@@ -125,29 +128,33 @@ class Landing extends Component {
       sgist.data[1],
       sInformation.data[1]
     ];
-    console.log(landing);
-    console.log(scommunity);
+
+
+    
+    //this.setState({ cards: land.data });
+
+
 
     // this.setState({cards: scommunity.data})
+    this.props.stopLoading()
   }
 
   render() {
+
     const { cards } = this.state;
     return (
-      <Consumer>
-        {value => {
-          const { dispatch } = value;
-          return (
+          // const { dispatch } = value;
             <div className="row justify-content-center pt-2">
               {cards.map(card => (
-                <SCard key={card.id} cardDetails={card} />
+                <SCard key={card.id} cardDetails={{ ...card }} />
               ))}
             </div>
-          );
-        }}
-      </Consumer>
     );
   }
 }
 
-export default Landing;
+const mapStateToProps = state => {
+  return {}
+}
+
+export default connect(mapStateToProps, actions)(Landing);

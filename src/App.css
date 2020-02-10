@@ -24,7 +24,7 @@ textarea {
 
 .bar:before,
 .bar:after {
-  content: "";
+  content: '';
   height: 2px;
   width: 0;
   bottom: 1px;
@@ -87,8 +87,8 @@ textarea {
 }
 
 .card-size {
-  background: "rgba(255, 255, 255, 0.0)";
-  border: "none";
+  background: 'rgba(255, 255, 255, 0.0)';
+  border: 'none';
 }
 
 /* .img-responsive{
@@ -97,7 +97,7 @@ textarea {
 } */
 
 .body-background {
-  background: #000c2e;
+  /* background: #000c2e; */
 }
 
 .my-butt {
@@ -218,7 +218,7 @@ textarea {
   border: 1px solid #fff;
   margin-right: 10px;
   width: 30px;
-  background-image: url("../src/assets/favicon.ico");
+  background-image: url('../src/assets/favicon.ico');
 }
 
 .chat-semi-circle {
@@ -300,4 +300,89 @@ textarea {
 
 .show-container {
   display: block;
+}
+
+.spinner {
+  position: fixed;
+  width: 100%;
+  left: calc(50vw - 40px);
+  top: calc(50vh - 40px);
+}
+.spinnerMother {
+  background: rgb(0, 0, 0, 0.8);
+  position: absolute;
+  height: 100%;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.s-label{
+  position: absolute;
+  top: 30%;
+  font-family: 'Montserrat', sans-serif;
+  left: -1.2%;
+}
+
+.scard-container{
+  position: relative;
+
+}
+
+.text-light{
+  font-family: 'Montserrat', sans-serif;
+}
+
+.short-title{
+  width: 100%;
+  /* white-space: nowrap; */
+  overflow: hidden;
+  cursor: pointer;
+  /* text-overflow: ellipsis; */
+}
+
+.fades {
+  position: relative;
+  height: 2.8em; /* exactly three lines */
+}
+
+.fades:after {
+  content: "";
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 70%;
+    height: 1.2em;
+    background: linear-gradient(to right, rgba(246, 213, 249, 0),rgb(255, 255, 255) 56%);
+}
+
+.body-text {
+  color: #000 !important;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.body-text.header{
+  color: #000 !important;
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+.text-detail{
+  font-family: 'Montserrat', sans-serif;
+    line-height: 2;
+    font-size: 1.2em;
+}
+
+.icons{
+  font-size: 1.2em;
+    position: relative;
+    top: -0.5em;
+    left: 0.5em;
+    font-family: roboto , sans-serif;
+}
+
+.fa-icons-wrapper{
+  font-size: 0.8em;
+  cursor: pointer;
 }

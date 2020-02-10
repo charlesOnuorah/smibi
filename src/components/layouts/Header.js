@@ -53,7 +53,7 @@ class Header extends Component {
               <Link className="nav-item nav-link  mr-2" to="/scommunity">
                 <i className=" fa fa-users fa fa-bell" /> sCommunity
               </Link>
-              <Link className="nav-item nav-link mr-2 " to="sinfo">
+              <Link className="nav-item nav-link mr-2 " to="sinformation">
                 <i className="fa fa-info-circle" /> sInformation
               </Link>
               <Link className="nav-item nav-link  mr-2" to="sgist">

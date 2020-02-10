@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SCommunityCard from "../simbicards/SCommunityCard";
-import { Consumer } from "../../context";
+import { connect } from "react-redux";
+import * as actions from "../../actions";
 import axios from "axios";
 class SCommunity extends Component {
   constructor(props) {
@@ -88,7 +89,8 @@ class SCommunity extends Component {
           like: 24,
           comment: 16
         }
-      ]
+      ],
+      loading: true
     };
   }
 
@@ -100,60 +102,82 @@ class SCommunity extends Component {
     const scommunity = await axios.get(
       "https://simbi.herokuapp.com/community-api/get-community-posts"
     );
-
-    this.setState({ cards: scommunity.data });
+     await this.props.stopLoading()
+    await this.setState({ cards: scommunity.data, loading: false });
   }
 
   render() {
     const { cards } = this.state;
-    return (
-      <Consumer>
-        {value => {
-          const { dispatch } = value;
-          const likes = 36;
-          const comments = "36 comments";
-          return (
-            <div
+    return !this.state.loading ? (
+      <div
               className="container pt-4"
               style={{ background: "rgba(255, 255, 255, 0.6)" }}
             >
               <h2 className="text-center mb-4 font-weight-bold ">sCOMMUNITY</h2>
               <div className="row">
                 <div
-                  className="col-sm-1 order-sm-2"
+                  className="col-sm-2 order-sm-2"
                   style={{
                     fontSize: "4rem",
                     color: "#00b0f3",
                     marginTop: "-3rem"
                   }}
                 >
-                  <i className="fas fa-plus-circle"></i>
+                  <button style={{width:'100%', textAlign:'center'}} 
+                    type="button" className="btn btn-default" data-toggle="modal" data-target="#exampleModal1">
+                    <i className="fas fa-plus-circle"></i>
+                    
+                  </button>
+                 
                   <p
                     className="font-weight-light"
                     style={{
                       fontSize: "1rem",
                       marginTop: "-1rem",
-                      color: "#000"
+                      color: "#000",
+                      textAlign: 'center'
                     }}
                   >
                     Ask a question
                   </p>
                 </div>
-                <div className="col-sm-11">
+                <div className="col-sm-10">
                   {cards.map(card => (
                     <SCommunityCard
                       key={card.id}
-                      cardDetails={{ ...card, likes, comments }}
+                      cardDetails={{ ...card, likes: 0, comments: 0 }}
                     />
                   ))}
                 </div>
               </div>
+              <div className="modal fade" id="exampleModal1" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                      <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div className="modal-body">
+                      ...
+                    </div>
+                    <div className="modal-footer">
+                      <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" className="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          );
-        }}
-      </Consumer>
-    );
+    ): (<div style={{minHeight: '100vh'}}>
+        
+    </div>)
   }
 }
 
-export default SCommunity;
+const mapStateToProps = state => {
+  return {}
+}
+
+export default connect(mapStateToProps, actions)(SCommunity);

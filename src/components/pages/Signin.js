@@ -13,10 +13,6 @@ class Signin extends Component {
   render() {
     const { username, password } = this.state;
     return (
-      <Consumer>
-        {value => {
-          const { dispatch } = value;
-          return (
             <div className="container">
               <div className="row justify-content-center mt-5">
                 <form className="col-md-4 mt-5">
@@ -59,9 +55,6 @@ class Signin extends Component {
                 </form>
               </div>
             </div>
-          );
-        }}
-      </Consumer>
     );
   }
 

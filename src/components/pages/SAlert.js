@@ -1,13 +1,8 @@
 import React, { Component } from "react";
-import { Consumer } from "../../context";
 
 class Landing extends Component {
   render() {
     return (
-      <Consumer>
-        {value => {
-          const { dispatch } = value;
-          return (
             <div className="container pt-4">
               <h1 style={{ color: "white" }} className="text-center">
                 sALERT
@@ -54,9 +49,6 @@ class Landing extends Component {
                 </div>
               </div>
             </div>
-          );
-        }}
-      </Consumer>
     );
   }
 }

@@ -18,10 +18,6 @@ class Signup extends Component {
   render() {
     const { name, email, password, male, female, username, phone } = this.state;
     return (
-      <Consumer>
-        {value => {
-          const { dispatch } = value;
-          return (
             <div className="container">
               <div className="row justify-content-center mt-5">
                 <form
@@ -111,9 +107,6 @@ class Signup extends Component {
                 </form>
               </div>
             </div>
-          );
-        }}
-      </Consumer>
     );
   }
 

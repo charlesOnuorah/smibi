@@ -5,10 +5,6 @@ import { Consumer } from "../../context";
 class Profile extends Component {
   render() {
     return (
-      <Consumer>
-        {value => {
-          const { dispatch } = value;
-          return (
             <div className="container">
               <div className="row justify-content-center mt-5">
                 <div
@@ -72,9 +68,6 @@ class Profile extends Component {
                 </div>
               </div>
             </div>
-          );
-        }}
-      </Consumer>
     );
   }
 }

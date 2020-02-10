@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import SGistCard from "../simbicards/SGistCard";
-import { Consumer } from "../../context";
+import { connect } from "react-redux";
+import * as actions from "../../actions";
 
 class SGist extends Component {
   constructor(props) {
@@ -86,7 +87,8 @@ class SGist extends Component {
             "An estimated 24.6 million youths aged 12—had used an illicit drug in the past month. This number is up from 8.3 percent in 2002.",
           width: true
         }
-      ]
+      ],
+      loading: true
     };
   }
 
@@ -99,30 +101,31 @@ class SGist extends Component {
     const gists = await axios.get(
       "https://simbi.herokuapp.com/community-api/get-gist-posts"
     );
-
-    this.setState({ cards: gists.data });
+    await this.props.stopLoading()
+    await this.setState({ cards: gists.data, loading: false });
   }
 
   render() {
     const { cards } = this.state;
-    return (
-      <Consumer>
-        {value => {
-          const { dispatch } = value;
-          return (
-            <div className="container">
-              <h2 className="text-center text-light my-4">sGIST</h2>
-              <div className="row">
-                {cards.map((card, index) => (
-                  <SGistCard key={card.id} cardDetails={{ ...card, index }} />
-                ))}
-              </div>
-            </div>
-          );
-        }}
-      </Consumer>
-    );
+    return !this.state.loading ? (
+      <div className="container">
+        <h2 className="text-center text-light my-4">sGIST</h2>
+        <div className="row">
+          {cards.map((card, index) => (
+            <SGistCard key={card.id} cardDetails={{ ...card, index }} />
+          ))}
+        </div>
+      </div>
+      ): (
+        <div style={{minHeight: '100vh'}}> 
+
+        </div>
+      )
   }
 }
 
-export default SGist;
+const mapStateToProps = state => {
+  return {}
+}
+
+export default connect(mapStateToProps, actions)(SGist);

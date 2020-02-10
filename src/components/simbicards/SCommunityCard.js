@@ -43,23 +43,24 @@ class SCommunityCard extends Component {
           <i className="col-sm-1 fas fa-user fa-3x"></i>
 
           <div className="col-sm-10">
-            <h5 className="text-warning">{username}</h5>
+            <h5 className="text-primary">{username}</h5>
             <h6 className="text-grey">{formattedTime}</h6>
             <h4 className="text-grey font-weight-bold mb-4">
-              <u>{topic_title}</u>
+              <span>{topic_title}</span>
             </h4>
-            <h7 className="text-grey"> {topic_details}</h7>
+            <h7 className="text-grey text-detail"> {topic_details}</h7>
             <div className="row justify-content-between p-3 pr-5">
               <span>
-                <i className="far fa-thumbs-up fa-2x"></i>
-                {likes}
+                <span className="fa-icons-wrapper"><i className="far fa-thumbs-up fa-2x"></i></span>
+                <span className="icons">{likes}</span>
               </span>
               <span>
-                <i className="fas fa-comment-alt fa-2x"></i>
-                {comments}
+                <span className="fa-icons-wrapper"><i className="fas fa-comment-alt fa-2x"></i></span>
+                <span className="icons">{comments}</span>
               </span>
-              <i className="fas fa-reply fa-flip-horizontal fa-2x"></i>
-              <i className="far fa-flag fa-2x"></i>
+              <span className="fa-icons-wrapper"><i className="fas fa-reply fa-flip-horizontal fa-2x"></i></span>
+              <span className="fa-icons-wrapper"><i className="far fa-flag fa-2x"></i></span>
+              <span className="icons"></span>
             </div>
           </div>
         </div>

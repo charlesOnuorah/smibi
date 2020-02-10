@@ -1,43 +1,22 @@
-import React from "react";
-import "./App.css";
-import Header from "./components/layouts/Header";
-import Footer from "./components/layouts/Footer";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Landing from "../src/components/pages/Landing";
-import SGist from "../src/components/pages/SGist";
-import SCommunity from "../src/components/pages/SCommunity";
-import SInfo from "../src/components/pages/SInfo";
-import Profile from "../src/components/pages/Profile";
-import Notification from "../src/components/pages/notification";
-import SAlert from "../src/components/pages/SAlert";
-import AlertForm from "../src/components/pages/AlertForm";
-import Signup from "../src/components/pages/Signup";
-import Signin from "../src/components/pages/Signin";
-import { Provider } from "./context";
+import React from 'react';
+import './App.css';
+import { BrowserRouter as Router, } from 'react-router-dom';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import { Provider } from "react-redux";
+import ReduxThunk from "redux-thunk";
+import { createStore, applyMiddleware } from 'redux';
+
+import Reducer from './reducers';
+import Root from './Root';
+const createStoreWithMiddleware = applyMiddleware(ReduxThunk)(createStore)
+
 
 function App() {
   return (
-    <Provider>
+    <Provider store={createStoreWithMiddleware(Reducer,
+      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())}>
       <Router>
-        <div className="App body-background ">
-          <Header />
-          <div className="container-fluid ">
-            <Switch>
-              <Route exact path="/" component={Landing} />
-              <Route exact path="/sgist" component={SGist} />
-              <Route exact path="/scommunity" component={SCommunity} />
-              <Route exact path="/sinfo" component={SInfo} />
-              <Route exact path="/profile" component={Profile} />
-              <Route exact path="/salert" component={SAlert} />
-              <Route exact path="/alert-form" component={AlertForm} />
-              <Route exact path="/signup" component={Signup} />
-              <Route exact path="/signin" component={Signin} />
-              <Route exact path="/notification" component={Notification} />
-            </Switch>
-          </div>
-          <Footer />
-        </div>
+        <Root />
       </Router>
     </Provider>
   );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import SInfoCards from '../simbicards/SInfoCards';
-import { Consumer } from '../../context';
+import * as actions from "../../actions";
 
 class SInfo extends Component {
   constructor(props) {
@@ -49,7 +50,7 @@ class SInfo extends Component {
     this.handlePuberty = this.handlePuberty.bind(this);
     this.handleClose = this.handleClose.bind(this);
 
-
+    this.props.stopLoading()
   }
 
   handleClick() {
@@ -68,10 +69,6 @@ class SInfo extends Component {
     const { cards, show } = this.state;
 
     return (
-      <Consumer>
-        {value => {
-          const { dispatch } = value;
-          return (
             <div className='container'>
               <h3 className='text-center text-light mt-4'>sINFORMATION</h3>
               <h5 className='text-center text-light font-weight-light mb-3'>
@@ -171,11 +168,12 @@ class SInfo extends Component {
                 </div>
               </div>
             </div>
-          );
-        }}
-      </Consumer>
     );
   }
 }
 
-export default SInfo;
+const mapStateToProps = state => {
+  return {}
+}
+
+export default connect(mapStateToProps, actions)(SInfo);

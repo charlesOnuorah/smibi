@@ -34,12 +34,12 @@ class SGistCard extends Component {
             />
           </div>
           <div className="card-body p-0">
-            <h5 className="text-light">{gist_title}</h5>
-            <h6 className="text-warning font-italic">{username}</h6>
-            <h6 className="text-light gistContent" style={{ width: cardWidth }}>
+            <h5 className="">{gist_title}</h5>
+            <h6 className="text-primary font-italic">{username}</h6>
+            <h6 className="gistContent" style={{ width: cardWidth }}>
               {gist_details}
             </h6>
-            <p className="text-light">
+            <p className="">
               <i className="fas fa-comment-alt text-dark" /> {commentCount}
             </p>
           </div>
