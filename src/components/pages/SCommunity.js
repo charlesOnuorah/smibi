@@ -123,19 +123,20 @@ class SCommunity extends Component {
                     marginTop: "-3rem"
                   }}
                 >
-                  <button style={{width:'100%', textAlign:'center'}} 
-                    type="button" className="btn btn-default" data-toggle="modal" data-target="#exampleModal1">
+                  <a style={{width:'100%', textAlign:'center'}}  href="#exampleModal"
+                     data-toggle="modal" data-target="#exampleModal">
                     <i className="fas fa-plus-circle"></i>
                     
-                  </button>
+                  </a>
                  
                   <p
                     className="font-weight-light"
                     style={{
                       fontSize: "1rem",
-                      marginTop: "-1rem",
+                      marginTop: "0rem",
                       color: "#000",
-                      textAlign: 'center'
+                      marginLeft:'-0.9rem',
+                      fontFamily: 'cursive, sans-serif'
                     }}
                   >
                     Ask a question
@@ -150,25 +151,30 @@ class SCommunity extends Component {
                   ))}
                 </div>
               </div>
-              <div className="modal fade" id="exampleModal1" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                   <div className="modal-content">
                     <div className="modal-header">
-                      <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                      <h5 className="modal-title" id="exampleModalLabel">Leave A Comment</h5>
                       <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
                     <div className="modal-body">
-                      ...
+                      <form>
+                        <div class="form-group">
+                          <label for="exampleFormControlTextarea1">Enter Comment</label>
+                          <textarea class="form-control" placeholder="Leave a comment" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                      </form>
                     </div>
                     <div className="modal-footer">
                       <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" className="btn btn-primary">Save changes</button>
+                      <button type="button" className="btn btn-primary">Post</button>
                     </div>
                   </div>
                 </div>
-              </div>
+            </div>
             </div>
     ): (<div style={{minHeight: '100vh'}}>
         

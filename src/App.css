@@ -275,7 +275,7 @@ textarea {
 /* Handle nav hide overflow */
 
 #navbar {
-  z-index: 9000;
+  z-index: 1000;
 }
 .circle-parent {
   width: 180px;

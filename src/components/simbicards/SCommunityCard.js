@@ -108,6 +108,7 @@ class SCommunityCard extends Component {
             </div>
           </div>
         </div>
+        
       </div>
     );
   }
