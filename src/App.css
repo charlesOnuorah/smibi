@@ -386,3 +386,7 @@ textarea {
   font-size: 0.8em;
   cursor: pointer;
 }
+
+.liked > i{
+  color: #007bff;
+}
