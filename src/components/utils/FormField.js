@@ -10,7 +10,7 @@ const FormField = ({ id, type, value, placeholder, onChange }) => {
         placeholder={placeholder}
         onChange={e => onChange(e)}
       />
-      <span class="bar"></span>
+      <span className="bar"></span>
     </div>
   );
 };

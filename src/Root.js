@@ -16,6 +16,7 @@ import Footer from './components/layouts/Footer';
 import loading from './assets/loading.svg';
 import { connect } from "react-redux";
 import * as actions from "./actions";
+import AuthRoute from "./components/Hoc/AuthRoute";
 
 class Root extends Component{
     render(){

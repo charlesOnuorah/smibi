@@ -90,8 +90,11 @@ class SCommunity extends Component {
           comment: 16
         }
       ],
-      loading: true
+      loading: true,
+      commentBody: '',
+      commentTitle: ''
     };
+    this.closeModalRef = React.createRef()
   }
 
   async componentDidMount() {
@@ -105,7 +108,20 @@ class SCommunity extends Component {
      await this.props.stopLoading()
     await this.setState({ cards: scommunity.data, loading: false });
   }
-
+  handleChange = e => {
+    const {target: {name, value}} = e;
+    console.log(name, value)
+    this.setState({[name]: value})
+  }
+  hanldeSubmit = e => {
+    e.preventDefault()
+    //call the endpoint
+    this.closeModalRef.current.click()
+    this.props.startLoading();
+    setTimeout(() => {
+      this.props.stopLoading()
+    },3000)
+  }
   render() {
     const { cards } = this.state;
     return !this.state.loading ? (
@@ -143,9 +159,9 @@ class SCommunity extends Component {
                   </p>
                 </div>
                 <div className="col-sm-10">
-                  {cards.map(card => (
+                  {cards.map((card, i) => (
                     <SCommunityCard
-                      key={card.id}
+                      key={i}
                       cardDetails={{ ...card, likes: 0, comments: 0 }}
                     />
                   ))}
@@ -162,15 +178,19 @@ class SCommunity extends Component {
                     </div>
                     <div className="modal-body">
                       <form>
-                        <div class="form-group">
-                          <label for="exampleFormControlTextarea1">Enter Comment</label>
-                          <textarea class="form-control" placeholder="Leave a comment" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <div className="form-group">
+                          <label htmlFor="comment">Comment Title</label>
+                          <input onChange={this.handleChange} value={this.state.commentTitle} name="commentTitle" className="form-control" placeholder="Title"/>
+                        </div>
+                        <div className="form-group">
+                          <label htmlFor="commentBody">Enter Comment</label>
+                          <textarea onChange={this.handleChange} name="commentBody" value={this.state.commentBody} className="form-control" placeholder="Leave a comment" id="commentBody" rows="3"></textarea>
                         </div>
                       </form>
                     </div>
                     <div className="modal-footer">
-                      <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" className="btn btn-primary">Post</button>
+                      <button ref={this.closeModalRef} type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button onClick={this.hanldeSubmit} type="button" className="btn btn-primary">Post</button>
                     </div>
                   </div>
                 </div>

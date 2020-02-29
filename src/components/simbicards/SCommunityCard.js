@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import PersonComment from "./PersonComment";
+import { connect } from "react-redux";
+import * as actions from "../../actions";
 
 class SCommunityCard extends Component {
   constructor(props) {
@@ -9,8 +12,20 @@ class SCommunityCard extends Component {
       title: "",
       timeLabel: "",
       gist: "",
+      flag: false,
       commentCount: "",
-      liked: false
+      liked: false,
+      comments: [{id: 1, text:'Yes I agree', username:'Lina'},
+      {id: 1, text:'Yes I agree', username:'Lina'},
+      {id: 1, text:'Yes I agree', username:'Lina'},
+      {id: 1, text:'Yes I agree', username:'Lina'},
+      {id: 1, text:'Yes I agree', username:'Lina'},
+      {id: 1, text:'Yes I agree', username:'Lina'},
+      {id: 1, text:'Yes I agree', username:'Lina'},
+      {id: 1, text:'Yes I agree', username:'Lina'},
+      {id: 1, text:'Yes I agree', username:'Lina'},
+      {id: 1, text:'Yes I agree', username:'Lina'}
+      ]
     };
     this.likeRef = React.createRef();
   }
@@ -54,6 +69,42 @@ class SCommunityCard extends Component {
       liked: !this.state.liked
     })
   }
+  flagSpam = (e) => {
+    const {
+      topic_title,
+      id,
+    } = this.props.cardDetails;
+    e.preventDefault();
+    this.props.startLoading()
+   console.log('body', {
+      gist_id: id,
+      gist_title: topic_title,
+      spam: true,
+      username: "djdididi"
+    })
+    fetch(`https://simbi.herokuapp.com/community-api`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
+      body: {
+        gist_id: id,
+        gist_title: topic_title,
+        spam: true,
+        username: "kbubueewueu"
+      }
+    })
+    .then(res => res.json())
+    .then(res => {
+      this.props.stopLoading()
+    })
+    .catch(error => {
+      console.log('some errors were encountered', error)
+      this.props.stopLoading()
+    })
+    this.setState({flag: true})
+  }
   render() {
     const {
       username,
@@ -61,6 +112,7 @@ class SCommunityCard extends Component {
       topic_title,
       topic_details,
       likes,
+     
       comments
     } = this.props.cardDetails;
 
@@ -81,7 +133,7 @@ class SCommunityCard extends Component {
       hours + " : " + minutes.substr(-2) + " : " + seconds.substr(-2);
 
     return (
-      <div className="container mb-5">
+      <div className="container card mb-2 py-4">
         <div className="row justify-content-center">
           {/* <i className="col-sm-1 fas fa-user fa-3x"></i> */}
           <img  src="https://www.poutstation.com/upload/photos/avatar.jpg" alt="avatart"
@@ -92,26 +144,49 @@ class SCommunityCard extends Component {
             <h4 className="text-grey font-weight-bold mb-4">
               <span>{topic_title}</span>
             </h4>
-            <h6 className="text-grey text-detail"> {topic_details}</h6>
+            <h6 className="text-grey text-detail" style={{textAlign: 'justify'}}> {topic_details}</h6>
             <div className="row justify-content-between p-3 pr-5">
               <span>
                 <span onClick={this.toggleLike} className={`likes ${this.state.liked ? 'liked' : ''} fa-icons-wrapper`}><i  className={`far ${this.state.liked ? 'liked' : ''} fa-thumbs-up fa-2x`}></i></span>
                 <span  className="icons">{likes}</span>
               </span>
               <span>
-                <span className="fa-icons-wrapper"><i className="fas fa-comment-alt fa-2x"></i></span>
+                <span className="fa-icons-wrapper"><i style={{fontSize:'2em'}} className="far fa-comment-alt"></i></span>
                 <span className="icons">{comments}</span>
               </span>
-              <span className="fa-icons-wrapper"><i className="fas fa-reply fa-flip-horizontal fa-2x"></i></span>
-              <span className="fa-icons-wrapper"><i className="far fa-flag fa-2x"></i></span>
+              {/* <span className="fa-icons-wrapper" ><i  className="fas fa-reply fa-flip-horizontal fa-2x"></i></span> */}
+              <span  onClick={this.flagSpam} className="fa-icons-wrapper"><i className={`far ${this.state.flag ? 'text-danger': ''} fa-flag fa-2x`}></i></span>
               <span className="icons"></span>
             </div>
+            <div className="container">
+              <div className="row py-4 px-4">
+                <div className="d-flex" style={{flex: 1}}>
+                    <div className="form-group" style={{flex: 1, marginRight: 10}}>
+                      <input style={{width: '100%', paddingTop: '1.275rem'
+                      , paddingBottom: '1.275rem'}} className="rounded-pill form-control" placeholder="Enter comment" />
+                    </div>
+                    <button style={{width: '7rem', flex: 0.2, height: 41}} className="btn btn-success rounded-pill">Post</button>
+                </div>
+                <hr />
+              </div>
+              <div className="row" style={{height: '300px',overflowY: 'scroll'}}>
+                <div style={{height: '300px', overflowY: 'scroll', width:'100%'}}>
+                    {
+                      this.state.comments.map((comment, id) => (
+                        <PersonComment key={id} username={comment.username} text={comment.text}/>
+                      ))
+                    }
+                  </div>
+              </div>
+            </div>
+            
           </div>
         </div>
-        
       </div>
     );
   }
 }
 
-export default SCommunityCard;
+const mapStateToProps = state => ({})
+
+export default connect(mapStateToProps, actions)(SCommunityCard);
